@@ -1,0 +1,12 @@
+<p>Ajouter une catégorie <a [routerLink]="['add']">+</a></p>
+
+<div *ngIf="items">
+    <ul *ngFor="let item of items">
+        <li>{{item.name}}</li>
+        <li><a [routerLink]="['edit', item.id]">Modifier</a></li>
+        <li><a [routerLink]="['delete', item.id]">Supprimer</a></li>
+    </ul>
+</div>
+<div *ngIf="!items">
+    <span>Aucune catégorie enregistrée</span>
+</div>

@@ -1,0 +1,42 @@
+<form 
+    name="form"
+    #f="ngForm" 
+    (ngSubmit)="f.form.valid && onSubmit()"
+>
+    <label>Pseudo</label>
+    <input 
+        type="text" 
+        [(ngModel)]="form.pseudo" 
+        #pseudo="ngModel" 
+        name="pseudo" 
+        required
+        minlength="3"
+    >
+    <div *ngIf="pseudo.errors && f.submitted">
+        <div *ngIf="pseudo.errors?.['required']">
+            Le pseudo est requis
+        </div> 
+        <div *ngIf="pseudo.errors?.['minlength']">
+            Le pseudo doit faire au minimum 5 caractères
+        </div>    
+    </div>
+    <label>Mot de passe</label>
+    <input 
+        type="password" 
+        name="pwd" 
+        [(ngModel)]="form.password" 
+        #password="ngModel" 
+        required
+        minlength="5"
+    >
+    <div *ngIf="password.errors && f.submitted">
+        <div *ngIf="password.errors['required']">
+            Le mot de passe est requis
+        </div>
+        <div *ngIf="password.errors['minlength']">
+            Le mot de passe doit faire au minimum 5 caractères
+        </div>
+    </div>
+    <input type="submit" value="Se connecter">
+</form>
+<p>Vous n'avez pas de compte ? Créer en un <a [routerLink]="['/signin']">ici</a></p>

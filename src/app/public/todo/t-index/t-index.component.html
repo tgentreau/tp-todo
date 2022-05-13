@@ -1,0 +1,33 @@
+<p>Ajouter une nouvelle tâche <a [routerLink]="['add']">+</a></p>
+
+<div>
+    <div>
+        <h2>Todo</h2>
+        <div *ngIf="items">
+            <ul *ngFor="let item of items">
+                <li>Tâche: {{item.name}}</li>
+                <li>Catégorie: {{item.categorie}}</li>
+                <button (click)="doneTask(item.id, item.name, item.categorie, item.user, item.done)">Tâche effectué</button>
+                <li><a [routerLink]="['edit', item.id]">Modifier</a></li>
+                <li><a [routerLink]="['delete', item.id]">Supprimer</a></li>
+            </ul>
+        </div>
+        <div *ngIf="!items">
+            <span>Aucune tâche à faire</span>
+        </div>
+    </div>
+    <div>
+        <h2>Done</h2>
+        <div *ngIf="doneTaskArray">
+            <ul *ngFor="let item of doneTaskArray">
+                <li>Tâche: {{item.name}}</li>
+                <li>Catégorie: {{item.categorie}}</li>
+                <li><a [routerLink]="['edit', item.id]">Modifier</a></li>
+                <li><a [routerLink]="['delete', item.id]">Supprimer</a></li>
+            </ul>
+        </div>
+        <div *ngIf="!doneTaskArray">
+            <span>Aucune tâche faites</span>
+        </div>
+    </div>
+</div>

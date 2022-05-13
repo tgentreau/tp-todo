@@ -1,0 +1,27 @@
+<form 
+    name="form"
+    #f="ngForm" 
+    (ngSubmit)="f.form.valid && onSubmit()"
+>
+    <label>Nom de la tâche</label>
+    <input 
+        type="text" 
+        [(ngModel)]="form.name" 
+        #categorie="ngModel" 
+        name="categorie" 
+        required
+        minlength="4"
+    >
+    <div *ngIf="categorie.errors && f.submitted">
+        <div *ngIf="categorie.errors?.['required']">
+            Le nom de la tâche est requis
+        </div> 
+        <div *ngIf="categorie.errors?.['minlength']">
+            Le nom de la tâche doit faire au minimum 4 caractères
+        </div>    
+    </div>
+    <select [(ngModel)]="form.categorie" name="categorie">
+        <option *ngFor="let item of catArray" [value]="item.name">{{item.name}}</option>
+    </select>
+    <input type="submit" value="Ajouter">
+</form>
