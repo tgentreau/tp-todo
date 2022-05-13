@@ -30,7 +30,7 @@ export class TAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const id = localStorage.getItem('id')
+    const id: string = localStorage.getItem('id') as string
     let taskArray: string = localStorage.getItem('tâche') as string
     if(taskArray !== null) {
       let arrayTask: any = JSON.parse(taskArray)
@@ -44,7 +44,7 @@ export class TAddComponent implements OnInit {
         }
       )
       localStorage.setItem("tâche", JSON.stringify(arrayTask))
-      this.router.navigate(['todo'])
+      this.router.navigate(['home/todo'])
     } else {
       let newArrTask = []
       newArrTask.push(

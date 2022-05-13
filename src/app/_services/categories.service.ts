@@ -15,10 +15,10 @@ export class CategoriesService {
   }
 
   getById(id:number):Array<Categorie> {
-    const userArray: string = localStorage.getItem('categorie') as string
-    const users: Array<Categorie> = JSON.parse(userArray)
-    let editUser: any = []
-    editUser = users.find(e => e.id === id)
-    return editUser
+    const catArray: string = localStorage.getItem('categorie') as string
+    const cats: Array<Categorie> = JSON.parse(catArray)
+    let editCat: any = []
+    editCat = cats.find(e => e.id === id)
+    return editCat
   }
 }

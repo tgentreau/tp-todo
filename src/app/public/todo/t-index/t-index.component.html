@@ -22,12 +22,11 @@
             <ul *ngFor="let item of doneTaskArray">
                 <li>Tâche: {{item.name}}</li>
                 <li>Catégorie: {{item.categorie}}</li>
-                <li><a [routerLink]="['edit', item.id]">Modifier</a></li>
-                <li><a [routerLink]="['delete', item.id]">Supprimer</a></li>
+                <li><button (click)="deleteDoneTask(item.id)">Supprimer</button></li>
             </ul>
         </div>
         <div *ngIf="!doneTaskArray">
-            <span>Aucune tâche faites</span>
+            <span>Aucune tâche faite</span>
         </div>
     </div>
 </div>

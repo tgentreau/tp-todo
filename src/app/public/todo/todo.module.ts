@@ -8,7 +8,6 @@ import { TDeleteComponent } from './t-delete/t-delete.component';
 import { TIndexComponent } from './t-index/t-index.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     TAddComponent,
