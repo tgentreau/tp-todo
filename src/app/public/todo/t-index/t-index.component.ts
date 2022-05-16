@@ -14,10 +14,8 @@ export class TIndexComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUserId: string = localStorage.getItem('id') as string
-    if(this.items) {
-      this.items = this.getAllTaskByUserId(currentUserId)
-    }
-    if(this.doneTaskArray) {
+    this.items = this.getAllTaskByUserId(currentUserId)
+    if(this.doneTaskArray.length > 0) {
       this.doneTaskArray = this.getAllTaskDoneByUserId(currentUserId)
     }
   }
@@ -35,14 +33,12 @@ export class TIndexComponent implements OnInit {
     const taskArray: string = localStorage.getItem('done-task') as string
     if(taskArray) {
       const task: Array<Task> = JSON.parse(taskArray)
-      const taskByUser: Array<Task> = task.filter(e=> e.user === id)
+      const taskByUser = task.filter(e=> e.user === id)
       return taskByUser
-    } else {
-      localStorage.setItem('done-task', '')
-    }
+    } 
   }
 
-  doneTask(id: number, name: string, categorie: string, user: string, done: boolean) {
+  doneTask(id: number, name: string, categorie: string, user: string, done: boolean): void {
     done = true
     this.doneTaskArray.push(
       {
@@ -54,19 +50,19 @@ export class TIndexComponent implements OnInit {
       }
     )
     localStorage.setItem('done-task', JSON.stringify(this.doneTaskArray))
-    const task: string = localStorage.getItem('tâche') as string
-    const updateTask: any = JSON.parse(task)
-    updateTask.push(this.items)
-    updateTask.splice(id)
-    const newUpdateTask: string = JSON.stringify(updateTask)
-    localStorage.setItem('tâche', newUpdateTask)
-    location.reload()
+    this.deleteTask(id)
   }
 
-  deleteDoneTask(id: number) {
-    this.doneTaskArray.splice(id)
-    const newDoneTask: string = JSON.stringify(this.doneTaskArray)
+  deleteDoneTask(id: number): void {
+    this.doneTaskArray.splice(id, 1)
+    const newDoneTask = JSON.stringify(this.doneTaskArray)
     localStorage.setItem('done-task', newDoneTask)
+  }
+
+  deleteTask(id: number): void {
+    this.items.splice(id, 1)
+    const newDoneTask = JSON.stringify(this.items)
+    localStorage.setItem('tâche', newDoneTask)
   }
 
 }

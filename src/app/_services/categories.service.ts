@@ -14,7 +14,7 @@ export class CategoriesService {
     return categorie
   }
 
-  getById(id:number):Array<Categorie> {
+  getById(id: number): Array<Categorie> {
     const catArray: string = localStorage.getItem('categorie') as string
     const cats: Array<Categorie> = JSON.parse(catArray)
     let editCat: any = []

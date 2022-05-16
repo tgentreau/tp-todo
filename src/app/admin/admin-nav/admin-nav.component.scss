@@ -1,0 +1,26 @@
+* { 
+    list-style: none;
+    text-decoration: none; 
+    color: black;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    li button {
+        background-color: rgb(199, 32, 32);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    li a:hover {
+        text-decoration: underline;
+    }
+
+    li button:hover {
+        background-color: rgb(233, 37, 37);
+    }
+}

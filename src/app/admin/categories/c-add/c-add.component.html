@@ -1,24 +1,28 @@
-<form 
-    name="form"
-    #f="ngForm" 
-    (ngSubmit)="f.form.valid && onSubmit()"
->
-    <label>Catégorie</label>
-    <input 
-        type="text" 
-        [(ngModel)]="form.categorie" 
-        #categorie="ngModel" 
-        name="categorie" 
-        required
-        minlength="4"
+<div class="container">
+    <form 
+        name="form"
+        #f="ngForm" 
+        (ngSubmit)="f.form.valid && onSubmit()"
     >
-    <div *ngIf="categorie.errors && f.submitted">
-        <div *ngIf="categorie.errors?.['required']">
-            Le catégorie est requise
-        </div> 
-        <div *ngIf="categorie.errors?.['minlength']">
-            Le catégorie doit faire au minimum 4 caractères
-        </div>    
+    <div>
+        <label>Catégorie :</label>
+        <input 
+            type="text" 
+            [(ngModel)]="form.categorie" 
+            #categorie="ngModel" 
+            name="categorie" 
+            required
+            minlength="4"
+        >
+        <div *ngIf="categorie.errors && f.submitted">
+            <div *ngIf="categorie.errors?.['required']" class="err">
+                Le catégorie est requise
+            </div> 
+            <div *ngIf="categorie.errors?.['minlength']" class="err">
+                Le catégorie doit faire au minimum 4 caractères
+            </div>    
+        </div>
     </div>
-    <input type="submit" value="Ajouter">
-</form>
+        <input type="submit" value="Ajouter">
+    </form>
+</div>

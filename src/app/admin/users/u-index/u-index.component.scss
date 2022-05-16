@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+
+    .tab {
+        display: flex;
+        flex-direction: column;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1px solid #DDEEEE;
+
+        thead th {
+            background-color: #DDEFEF;
+            color: #336B6B;
+            border: 1px solid #DDEEEE;
+            padding: 10px;
+            text-align: left;
+        }
+        tbody td {
+            border: 1px solid #DDEEEE;
+            padding: 10px;
+            .fa-circle-minus {
+                color: rgb(199, 32, 32);
+                cursor: pointer;
+                transition: .5s; 
+            }
+            .fa-circle-minus:hover {
+                transform: rotate(360deg);
+                transition: .5s;
+            }
+        }
+    }
+}

@@ -1,4 +1,22 @@
-<ul *ngFor="let item of items">
-    <li>{{item.name}}</li>
-    <li><a [routerLink]="['delete', item.id]">Supprimer</a></li>
-</ul>
+<div class="container">
+    <div *ngIf="items">
+        <h2>Utilisateurs</h2>
+        <table>
+            <thead>
+                <th>Pseudo</th>
+                <th>Action</th>
+            </thead>
+            <tbody >
+                <tr *ngFor="let item of items">
+                    <td>{{item.name}}</td>
+                    <td>
+                        <a [routerLink]="['delete', item.id]"><i class="fa-solid fa-circle-minus"></i></a>
+                    </td>
+                </tr>
+            </tbody>  
+        </table>
+    </div>
+    <div *ngIf="!items">
+        <span>Aucune tâche à faire</span>
+    </div> 
+</div>

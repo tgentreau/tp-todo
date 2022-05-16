@@ -1,0 +1,18 @@
+* { list-style: none; }
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    ul li button {
+        background-color: rgb(199, 32, 32);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    ul li button:hover {
+        background-color: rgb(233, 37, 37);
+    }
+}

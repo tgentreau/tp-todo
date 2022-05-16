@@ -1,32 +1,47 @@
-<p>Ajouter une nouvelle tâche <a [routerLink]="['add']">+</a></p>
-
-<div>
-    <div>
+<p>Ajouter une nouvelle tâche <a [routerLink]="['add']"><i class="fa-solid fa-circle-plus"></i></a></p>
+<div class="container">
+    <div *ngIf="items">
         <h2>Todo</h2>
-        <div *ngIf="items">
-            <ul *ngFor="let item of items">
-                <li>Tâche: {{item.name}}</li>
-                <li>Catégorie: {{item.categorie}}</li>
-                <button (click)="doneTask(item.id, item.name, item.categorie, item.user, item.done)">Tâche effectué</button>
-                <li><a [routerLink]="['edit', item.id]">Modifier</a></li>
-                <li><a [routerLink]="['delete', item.id]">Supprimer</a></li>
-            </ul>
-        </div>
-        <div *ngIf="!items">
-            <span>Aucune tâche à faire</span>
-        </div>
+        <table>
+            <thead>
+                <th>Tâche</th>
+                <th>Catégorie</th>
+                <th>Action</th>
+            </thead>
+            <tbody >
+                <tr *ngFor="let item of items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.categorie}}</td>
+                    <td>
+                        <i class="fa-solid fa-check" (click)="doneTask(item.id, item.name, item.categorie, item.user, item.done)"></i>
+                        <a [routerLink]="['edit', item.id]"><i class="fa-solid fa-pen"></i></a>
+                        <i class="fa-solid fa-circle-minus" (click)="deleteTask(item.id)"></i>
+                    </td>
+                </tr>
+            </tbody>  
+        </table>
     </div>
-    <div>
+    <div *ngIf="!items">
+        <span>Aucune tâche à faire</span>
+    </div> 
+    <div *ngIf="doneTaskArray">
         <h2>Done</h2>
-        <div *ngIf="doneTaskArray">
-            <ul *ngFor="let item of doneTaskArray">
-                <li>Tâche: {{item.name}}</li>
-                <li>Catégorie: {{item.categorie}}</li>
-                <li><button (click)="deleteDoneTask(item.id)">Supprimer</button></li>
-            </ul>
-        </div>
-        <div *ngIf="!doneTaskArray">
-            <span>Aucune tâche faite</span>
-        </div>
+        <table>
+            <thead>
+                <th>Tâche</th>
+                <th>Catégorie</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of doneTaskArray">
+                    <td>{{item.name}}</td>
+                    <td>{{item.categorie}}</td>
+                    <td><button (click)="deleteDoneTask(item.id)">Supprimer</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <div *ngIf="!doneTaskArray">
+        <span>Aucune tâche faite</span>
+    </div>   
 </div>
