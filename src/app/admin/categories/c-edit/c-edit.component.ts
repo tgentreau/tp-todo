@@ -21,16 +21,16 @@ export class CEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id: any = this.activated.snapshot.paramMap.get('id')
-    let newId = parseInt(id)
-    const editCat = this.categorie.getById(newId)
+    let id: string = this.activated.snapshot.paramMap.get('id') as string
+    let newId: number = parseInt(id)
+    const editCat: Array<Categorie> = this.categorie.getById(newId)
     this.form = editCat
   }
 
   onSubmit(): void {
-    let arrCat = this.categorie.getAll()
+    let arrCat: Array<Categorie> = this.categorie.getAll()
     arrCat.splice(this.form.id, 1, this.form)
-    let newCatArr = JSON.stringify(arrCat)
+    let newCatArr: string = JSON.stringify(arrCat)
     localStorage.setItem('categorie', newCatArr)
     this.router.navigate(['admin/categories'])
   }

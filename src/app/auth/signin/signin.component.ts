@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
 
 @Component({
@@ -8,7 +9,7 @@ import { User } from '../../interfaces/user';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   form = {
     pseudo: '',
@@ -29,7 +30,7 @@ export class SigninComponent implements OnInit {
 
   onSubmit(): void {
     this.userArray.push({ id: this.userArray.length, name: this.form.pseudo, password: this.form.password, admin: false })
-    console.log(this.userArray);
     localStorage.setItem('users', JSON.stringify(this.userArray))
+    this.router.navigate(['login'])
   }
 }

@@ -9,8 +9,8 @@ export class LogoutService {
   constructor(private router: Router) { }
 
   logout(): void {
-    const token_admin = localStorage.getItem('admin-token')
-    const token_user = localStorage.getItem('user-token')
+    const token_admin: string = localStorage.getItem('admin-token') as string
+    const token_user: string = localStorage.getItem('user-token') as string
     if(token_admin) {
       localStorage.removeItem('admin-token')
       this.router.navigate(['auth'])

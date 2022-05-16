@@ -26,7 +26,7 @@ export class CDeleteComponent implements OnInit {
     this.cat = deleteCat
   }
 
-  delete(id: number) {
+  delete(id: number): void {
     let arrCat = this.categorie.getAll()
     arrCat.splice(id, 1)
     let newCatArr = JSON.stringify(arrCat)

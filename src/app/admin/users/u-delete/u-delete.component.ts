@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/_services/users.service';
 
 @Component({
@@ -21,16 +22,15 @@ export class UDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     let id: string = this.activated.snapshot.paramMap.get('id') as string
-    let newId = parseInt(id)
-    const deleteUser= this.users.getById(newId)
+    let newId: number = parseInt(id)
+    const deleteUser: Array<User> = this.users.getById(newId)
     this.user = deleteUser
-    console.log(this.user);
   }
 
   delete(id: number) {
-    let arrUser = this.users.getAll()
+    let arrUser: Array<User> = this.users.getAll()
     arrUser.splice(id, 1)
-    let newUserArr = JSON.stringify(arrUser)
+    let newUserArr: string = JSON.stringify(arrUser)
     localStorage.setItem('users', newUserArr)
     this.router.navigate(['admin/users'])
   }

@@ -19,12 +19,12 @@ export class TokenService {
   }
 
   isLoggedAdmin(): boolean {
-    const token = localStorage.getItem('admin-token')
+    const token: string = localStorage.getItem('admin-token') as string
     return !! token
   }
 
   isLoggedUser(): boolean {
-    const token = localStorage.getItem('user-token')
+    const token: string = localStorage.getItem('user-token') as string
     return !! token
   }
 }

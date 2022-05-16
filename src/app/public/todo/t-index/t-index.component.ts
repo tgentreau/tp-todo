@@ -35,7 +35,7 @@ export class TIndexComponent implements OnInit {
     const taskArray: string = localStorage.getItem('done-task') as string
     if(taskArray) {
       const task: Array<Task> = JSON.parse(taskArray)
-      const taskByUser = task.filter(e=> e.user === id)
+      const taskByUser: Array<Task> = task.filter(e=> e.user === id)
       return taskByUser
     } else {
       localStorage.setItem('done-task', '')
@@ -65,7 +65,7 @@ export class TIndexComponent implements OnInit {
 
   deleteDoneTask(id: number) {
     this.doneTaskArray.splice(id)
-    const newDoneTask = JSON.stringify(this.doneTaskArray)
+    const newDoneTask: string = JSON.stringify(this.doneTaskArray)
     localStorage.setItem('done-task', newDoneTask)
   }
 
